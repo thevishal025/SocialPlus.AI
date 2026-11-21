@@ -1,0 +1,167 @@
+/* ================================================================
+   SocialPlus.ai — Responsive Layout Styles
+   ================================================================ */
+
+@media (max-width: 1024px) {
+  .analyzers-grid {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .charts-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .top-nav {
+    padding: 12px 18px;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .nav-actions {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .main-content {
+    padding: 20px 14px 60px 14px;
+  }
+
+  .hero-title {
+    font-size: 26px;
+  }
+
+  .hero-subtitle {
+    font-size: 14px;
+  }
+
+  .panel-container {
+    padding: 20px 16px;
+  }
+
+  .segmented-tabs {
+    width: 100%;
+    overflow-x: auto;
+    justify-content: flex-start;
+  }
+
+  .dash-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dash-actions {
+    width: 100%;
+    flex-wrap: wrap;
+  }
+
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .explorer-filters {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pagination-wrap {
+    flex-direction: column;
+    gap: 12px;
+    align-items: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+
+/* === SocialPlus.ai black & yellow refresh === */
+:root{
+ --bg-primary:#11110f;--bg-surface:#1b1b18;--bg-surface-hover:#24241f;
+ --border-color:#35352e;--border-focus:#facc15;
+ --text-primary:#f7f5e9;--text-secondary:#c5c1ad;--text-muted:#96917c;
+ --accent-blue:#facc15;--accent-blue-hover:#eab308;--accent-purple:#facc15;
+ --accent-emerald:#eab308;--accent-amber:#facc15;
+ --badge-pos-bg:#253323;--badge-pos-text:#a3e635;
+ --badge-neg-bg:#3a2220;--badge-neg-text:#fca5a5;
+ --badge-neu-bg:#30302a;--badge-neu-text:#dedac8;
+ --badge-mix-bg:#3c3216;--badge-mix-text:#facc15;
+ --badge-sar-bg:#342a18;--badge-sar-text:#fcd34d;
+ --shadow-sm:0 2px 10px rgba(0,0,0,.22);
+ --shadow-md:0 12px 28px rgba(0,0,0,.3);
+ --shadow-lg:0 20px 50px rgba(0,0,0,.38);
+}
+body{background:#11110f;color:var(--text-primary)}
+.top-nav{background:#171714;border-color:#34342d;box-shadow:none}
+.brand-logo{background:#facc15;color:#171714}
+.brand-name{color:#fff}
+.brand-tag{background:#302b13;color:#facc15;border-color:#62531a}
+.nav-btn{color:#ddd8c5;border-color:#414137}
+.nav-btn:hover,.nav-btn.primary{background:#facc15;color:#171714;border-color:#facc15}
+.hero-title{color:#fff}
+.hero-subtitle{color:#bdb8a5}
+.analyzer-card,.panel-container,.stat-card,.card,.modal-content{background:#1b1b18!important;border-color:#39392f!important;color:#f7f5e9}
+.analyzer-card:hover{border-color:#b99a19}
+.analyzer-card.active{border-color:#facc15;box-shadow:0 0 0 1px rgba(250,204,21,.2)}
+.card-title,.panel-heading,.form-label,.form-group label,h1,h2,h3,h4{color:#f7f5e9}
+.card-desc,.hero-subtitle,.panel-desc{color:#bdb8a5}
+.form-control,input,select,textarea{background:#11110f!important;color:#f7f5e9!important;border-color:#414137!important}
+.form-control::placeholder,input::placeholder,textarea::placeholder{color:#817d6d}
+.btn-primary{background:#facc15!important;border-color:#facc15!important;color:#171714!important;font-weight:800}
+.btn-primary:hover{background:#eab308!important}
+.btn-outline,.seg-tab{background:#24241f!important;color:#e8e3d1!important;border-color:#45453a!important}
+.seg-tab.active{background:#facc15!important;color:#171714!important;border-color:#facc15!important}
+.status-banner.info,.status-banner.warning{background:#282516!important;color:#f5e8ad!important;border-color:#76611a!important}
+.status-banner p{color:#d2c9a3}
+.drop-zone{background:#191914;border-color:#5d501d;color:#e8e3d1}
+table th,table td{border-color:#3a3a31!important;color:#e8e3d1}
+a{color:#facc15}
+.meta-platform-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;margin:18px 0 24px}
+.meta-platform-card{display:flex;align-items:center;gap:14px;text-align:left;padding:20px 22px;border:1px solid #414137;border-radius:14px;background:#20201b;color:#f7f5e9;cursor:pointer;transition:.18s}
+.meta-platform-card:hover,.meta-platform-card.active{border-color:#facc15;background:#2a2719;box-shadow:0 0 0 1px rgba(250,204,21,.2)}
+.meta-platform-card strong{display:block;font-size:17px}.meta-platform-card small{display:block;color:#bdb8a5;margin-top:4px}
+.meta-brand-icon{width:44px;height:44px;border-radius:12px;display:grid;place-items:center;font-size:27px;font-weight:900;background:#facc15;color:#171714}
+.choice-arrow{margin-left:auto;color:#facc15;font-size:22px}
+.panel-page-heading{display:flex;align-items:center;gap:14px;margin-bottom:20px}
+.panel-back{border:1px solid #4a493c;background:#24241f;color:#facc15;border-radius:9px;padding:9px 13px;cursor:pointer;font-weight:700}
+.panel-back:hover{background:#facc15;color:#171714}
+.panel-container{padding:24px;border:1px solid #37372e;border-radius:18px;box-shadow:var(--shadow-md)}
+.panel-container .panel-header{border-bottom:1px solid #39392f;padding-bottom:16px;margin-bottom:20px}
+#ecom-product-details .card{background:#20201b!important;color:#f7f5e9!important}
+@media(max-width:700px){.meta-platform-choices{grid-template-columns:1fr}.panel-container{padding:16px}.top-nav{padding:12px 14px}.brand-tag{display:none}}
+
+/* E-commerce review results and filters */
+.ecom-product-panel,.ecom-reviews-panel{margin-top:18px;padding:20px;border:1px solid #454333;border-radius:14px;background:#1c1c18;color:#f7f5e9}
+.ecom-product-panel h3,.ecom-reviews-panel h3{margin:0 0 16px;color:#facc15}
+.ecom-product-overview{display:flex;gap:18px;align-items:flex-start;flex-wrap:wrap}
+.ecom-gallery{display:flex;gap:8px;flex-wrap:wrap;max-width:300px}
+.ecom-gallery img{width:88px;height:88px;object-fit:contain;padding:5px;border:1px solid #474536;border-radius:9px;background:#fff}
+.ecom-product-summary{flex:1;min-width:240px}
+.ecom-product-summary h4{color:#fff;margin-top:0}
+.ecom-price{font-size:20px;font-weight:800;color:#facc15}.ecom-price del{font-size:13px;color:#aaa58f;margin-left:8px}
+.ecom-table-wrap{overflow:auto}.ecom-table-wrap table{width:100%;border-collapse:collapse}
+.ecom-table-wrap th,.ecom-table-wrap td{padding:9px;border-bottom:1px solid #3e3d32;text-align:left;color:#e9e4d2}
+.ecom-review-heading{display:flex;justify-content:space-between;align-items:center;gap:12px}
+.ecom-review-heading p,.ecom-review-footnote{color:#bcb69f;font-size:13px}
+.ecom-review-count{display:grid;place-items:center;min-width:42px;height:42px;padding:0 10px;border-radius:12px;background:#facc15;color:#171714;font-weight:900}
+.ecom-review-filters{display:flex;gap:12px;flex-wrap:wrap;align-items:end;margin:14px 0}
+.ecom-review-filters label{display:grid;gap:5px;color:#d7d1bb;font-size:12px}
+.ecom-review-filters select,.ecom-review-filters input{min-height:38px;padding:8px 10px;border:1px solid #514d38;border-radius:8px;background:#11110f;color:#f8f4e5}
+.ecom-review-filters input{flex:1;min-width:180px}
+.ecom-review-card{padding:14px 0;border-top:1px solid #3c3b31}
+.ecom-review-top{display:flex;justify-content:space-between;gap:12px;align-items:center;color:#f7f5e9}
+.ecom-stars{color:#facc15;white-space:nowrap}
+.ecom-review-card h4{margin:8px 0;color:#facc15}
+.ecom-review-card p{margin:6px 0;color:#e6e1cf;white-space:pre-wrap;line-height:1.55}
+.ecom-review-card small{color:#a9a38d}
+.ecom-no-reviews{padding:18px;border:1px dashed #756321;border-radius:10px;color:#e6d99d;background:#282516}
+@media(max-width:640px){.ecom-product-panel,.ecom-reviews-panel{padding:14px}.ecom-review-heading{align-items:flex-start}.ecom-review-top{align-items:flex-start;flex-direction:column}}

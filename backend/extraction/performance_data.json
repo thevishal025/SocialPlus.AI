@@ -1,0 +1,172 @@
+{
+  "crawl4ai": {
+    "success": 0,
+    "failure": 4,
+    "records": 0,
+    "avg_time": 26.11
+  },
+  "playwright": {
+    "success": 0,
+    "failure": 4,
+    "records": 0,
+    "avg_time": 11.23
+  },
+  "scrapy": {
+    "success": 0,
+    "failure": 4,
+    "records": 0,
+    "avg_time": 5.78
+  },
+  "beautifulsoup": {
+    "success": 0,
+    "failure": 4,
+    "records": 0,
+    "avg_time": 12.26
+  },
+  "history": [
+    {
+      "timestamp": 1794454868.9165602,
+      "engine": "crawl4ai",
+      "platform": "flipkart",
+      "duration": 87.63,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794454868.9179683,
+      "engine": "beautifulsoup",
+      "platform": "flipkart",
+      "duration": 36.34,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794454907.209497,
+      "engine": "playwright",
+      "platform": "flipkart",
+      "duration": 38.29,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794454919.0285888,
+      "engine": "scrapy",
+      "platform": "flipkart",
+      "duration": 11.82,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794455865.0046608,
+      "engine": "crawl4ai",
+      "platform": "amazon_in",
+      "duration": 8.92,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794455865.0046608,
+      "engine": "beautifulsoup",
+      "platform": "amazon_in",
+      "duration": 5.93,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794455867.287143,
+      "engine": "playwright",
+      "platform": "amazon_in",
+      "duration": 2.28,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794455871.0036945,
+      "engine": "scrapy",
+      "platform": "amazon_in",
+      "duration": 3.71,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794457183.508907,
+      "engine": "crawl4ai",
+      "platform": "flipkart",
+      "duration": 5.15,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794457183.508907,
+      "engine": "beautifulsoup",
+      "platform": "flipkart",
+      "duration": 4.59,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794457187.0395527,
+      "engine": "playwright",
+      "platform": "flipkart",
+      "duration": 3.53,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794457192.5880885,
+      "engine": "scrapy",
+      "platform": "flipkart",
+      "duration": 5.54,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794459415.0067055,
+      "engine": "crawl4ai",
+      "platform": "amazon_in",
+      "duration": 2.75,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794459415.0135567,
+      "engine": "beautifulsoup",
+      "platform": "amazon_in",
+      "duration": 2.17,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794459415.839585,
+      "engine": "playwright",
+      "platform": "amazon_in",
+      "duration": 0.83,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    },
+    {
+      "timestamp": 1794459417.8740375,
+      "engine": "scrapy",
+      "platform": "amazon_in",
+      "duration": 2.03,
+      "success": false,
+      "records": 0,
+      "error_category": ""
+    }
+  ]
+}

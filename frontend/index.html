@@ -1,0 +1,939 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SocialPlus.ai — Comment Intelligence Platform</title>
+  
+  <!-- Premium Fonts: Space Grotesk + Inter -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Stylesheets -->
+  <link rel="stylesheet" href="/static/css/style.css">
+  <link rel="stylesheet" href="/static/css/dashboard.css">
+  <link rel="stylesheet" href="/static/css/extraction.css">
+  <link rel="stylesheet" href="/static/css/responsive.css">
+
+  <!-- Chart.js for interactive analytics -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+<body>
+
+  <!-- Top Navigation Bar -->
+  <header class="top-nav">
+    <div class="brand-wrapper" id="nav-brand-home" role="button" tabindex="0" title="Return to Home">
+      <div class="brand-logo">S+</div>
+      <span class="brand-name">SocialPlus.ai</span>
+    </div>
+
+    <!-- Navigation Order: 1. History, 2. How to Use, 3. Extension -->
+    <div class="nav-actions">
+      <button class="nav-btn" id="btn-open-history" title="View past analysis reports">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        History
+      </button>
+
+      <button class="nav-btn" id="btn-open-howtouse" title="Step-by-step beginner guide">
+        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        How to Use
+      </button>
+
+      <!-- Extension: Placeholder Label (No functionality) -->
+      <span class="nav-placeholder-pill" id="nav-extension" title="Browser extension coming soon">Extension</span>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main class="main-content">
+
+    <!-- ================================================================
+         1. HOMEPAGE VIEW (Hero + ONLY THREE Minimalist Analyzer Cards)
+         ================================================================ -->
+    <section id="section-home">
+      <div class="hero-section">
+        <h1 class="hero-title">SocialPlus.ai</h1>
+        <p class="hero-subtitle">Understand Every Comment. Discover Every Insight.</p>
+      </div>
+
+      <!-- ONLY THREE Minimalist Analyzer Cards -->
+      <div class="analyzers-grid">
+        
+        <!-- Card 1: YouTube Analyzer -->
+        <div class="analyzer-card" id="card-youtube" role="button" tabindex="0">
+          <div class="card-icon-wrap youtube">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </div>
+          <h3 class="card-title">YouTube Analyzer</h3>
+          <p class="card-desc">Analyze comments from YouTube videos, shorts, and channels.</p>
+          <div class="card-footer">
+            <span>Get API &bull; Upload File</span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Card 2: Meta Analyzer -->
+        <div class="analyzer-card" id="card-meta" role="button" tabindex="0">
+          <div class="card-icon-wrap meta">
+            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </div>
+          <h3 class="card-title">Meta Analyzer</h3>
+          <p class="card-desc">Analyze Instagram and Facebook post comments and discussions.</p>
+          <div class="card-footer">
+            <span>Instagram &bull; Facebook</span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+        </div>
+
+        <!-- Card 3: E-commerce Analyzer -->
+        <div class="analyzer-card" id="card-ecommerce" role="button" tabindex="0">
+          <div class="card-icon-wrap ecommerce">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+          </div>
+          <h3 class="card-title">E-commerce Analyzer</h3>
+          <p class="card-desc">Analyze product reviews across Amazon, Flipkart, Meesho, Jio &amp; Myntra.</p>
+          <div class="card-footer">
+            <span>Amazon, Flipkart, Meesho, Jio, Myntra</span>
+            <span class="card-arrow">&rarr;</span>
+          </div>
+        </div>
+
+      </div>
+    </section>
+
+    <!-- ================================================================
+         2. YOUTUBE ANALYZER (Separate Clean Input Page)
+         ================================================================ -->
+    <section class="panel-container" id="section-youtube" style="display:none;">
+      <div class="panel-top-bar">
+        <button type="button" class="panel-back" id="btn-yt-back">&larr; Back to Home</button>
+      </div>
+
+      <div class="panel-header">
+        <div class="panel-heading">
+          <h2>YouTube Analyzer</h2>
+          <p class="panel-subtitle">Extract and understand audience opinions and engagement on YouTube videos.</p>
+        </div>
+
+        <!-- ONLY 2 TABS: Get API and Upload File (Without API removed) -->
+        <div class="segmented-tabs" id="yt-tabs">
+          <button class="seg-tab active" data-mode="api">Get API</button>
+          <button class="seg-tab" data-mode="upload">Upload File</button>
+        </div>
+      </div>
+
+      <!-- Tab 1: Get API Mode -->
+      <div class="mode-view" id="yt-view-api">
+        <div id="yt-api-banner" class="status-banner warning" style="display:none;">
+          <div>
+            <strong>YouTube API Status:</strong>
+            <p id="yt-api-banner-msg">YOUTUBE_API_KEY is not configured in .env. You can add your API key or switch to <strong>Upload File</strong> mode.</p>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="yt-video-input">Enter YouTube URL or Video ID</label>
+          <input type="text" id="yt-video-input" class="form-control" placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or youtu.be/... or Shorts URL">
+        </div>
+
+        <!-- Comment Quality Selector -->
+        <div class="form-group">
+          <label class="form-label">Comment Quality Selector</label>
+          <div class="quantity-wrap" id="yt-qty-wrap">
+            <button class="qty-pill" data-val="100">1–100</button>
+            <button class="qty-pill active" data-val="500">100–500</button>
+            <button class="qty-pill" data-val="1000">500–1,000</button>
+            <button class="qty-pill" data-val="2000">1,000–2,000</button>
+            <button class="qty-pill" data-val="5000">2,000–5,000</button>
+            <button class="qty-pill" data-val="custom">Custom</button>
+            <button class="qty-pill" data-val="all">All Available</button>
+          </div>
+          <input type="number" id="yt-custom-qty" class="form-control" style="display:none; max-width:220px; margin-top:10px;" placeholder="Custom count (e.g. 3500)" min="1" max="10000">
+        </div>
+
+        <div style="margin-top:28px;">
+          <button class="btn-primary" id="btn-yt-fetch-api">
+            Fetch Comments &amp; Analyze
+          </button>
+        </div>
+      </div>
+
+      <!-- Tab 2: Upload File Mode -->
+      <div class="mode-view" id="yt-view-upload" style="display:none;">
+        <div class="drop-zone" id="yt-drop-zone">
+          <div class="drop-icon">&#128194;</div>
+          <div class="drop-title">Upload YouTube Comments Dataset</div>
+          <div class="drop-desc">Drag &amp; drop CSV, XLSX, XLS, JSON, or TXT file (Max 25MB)</div>
+          <input type="file" id="yt-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
+        </div>
+        <div id="yt-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
+        <div style="margin-top:20px;">
+          <button class="btn-primary" id="btn-yt-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         3. META ANALYZER (Separate Clean Input Page)
+         ================================================================ -->
+    <section class="panel-container" id="section-meta" style="display:none;">
+      <div class="panel-top-bar">
+        <button type="button" class="panel-back" id="btn-meta-back">&larr; Back to Home</button>
+      </div>
+
+      <div class="panel-header">
+        <div class="panel-heading">
+          <h2>Meta Analyzer</h2>
+          <p class="panel-subtitle">Extract and analyze customer interactions on Instagram and Facebook.</p>
+        </div>
+
+        <!-- First Show: Instagram & Facebook Choices -->
+        <div class="meta-platform-choices" aria-label="Choose Meta platform">
+          <button type="button" class="meta-platform-card active" data-platform-choice="instagram">
+            <span class="meta-brand-icon instagram-brand">◎</span>
+            <span><strong>Instagram</strong><small>Post, reel and comment intelligence</small></span>
+            <span class="choice-arrow">&rarr;</span>
+          </button>
+          <button type="button" class="meta-platform-card" data-platform-choice="facebook">
+            <span class="meta-brand-icon facebook-brand">f</span>
+            <span><strong>Facebook</strong><small>Page, post and comment intelligence</small></span>
+            <span class="choice-arrow">&rarr;</span>
+          </button>
+        </div>
+
+        <!-- Hidden Segmented Tabs synced with platform choice -->
+        <div class="segmented-tabs" id="meta-platform-tabs" style="display:none;">
+          <button class="seg-tab active" data-platform="instagram">Instagram</button>
+          <button class="seg-tab" data-platform="facebook">Facebook</button>
+        </div>
+      </div>
+
+      <!-- Instagram Sub-view -->
+      <div class="meta-sub-view" id="meta-view-instagram">
+        <div class="subview-header">
+          <h3 class="subview-title">Instagram Comment Intelligence</h3>
+          <div class="segmented-tabs" id="ig-tabs">
+            <button class="seg-tab active" data-mode="api">API</button>
+            <button class="seg-tab" data-mode="public">Without API</button>
+            <button class="seg-tab" data-mode="upload">Upload File</button>
+          </div>
+        </div>
+
+        <!-- Instagram API Mode -->
+        <div class="mode-view" id="ig-view-api">
+          <div class="form-group">
+            <label class="form-label" for="ig-post-input">Instagram Post URL or Media ID</label>
+            <input type="text" id="ig-post-input" class="form-control" placeholder="https://www.instagram.com/p/C6xyz123/ or Reel URL">
+          </div>
+
+          <div class="form-group" style="margin-top:14px;">
+            <label class="form-label" for="ig-token-input">Access Token (Optional for Private Pages)</label>
+            <input type="password" id="ig-token-input" class="form-control" placeholder="Optional User/Page Access Token">
+          </div>
+
+          <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+            <button class="btn-primary" id="btn-ig-fetch-api">Fetch Comments &amp; Analyze</button>
+            <button class="btn-outline" id="btn-ig-connect-oauth">Connect via OAuth</button>
+          </div>
+        </div>
+
+        <!-- Instagram Without API Mode -->
+        <div class="mode-view" id="ig-view-public" style="display:none;">
+          <div class="form-group">
+            <label class="form-label" for="ig-public-input">Instagram Public Post URL</label>
+            <input type="text" id="ig-public-input" class="form-control" placeholder="https://www.instagram.com/p/...">
+          </div>
+          <div style="margin-top:20px;">
+            <button class="btn-primary" id="btn-ig-fetch-public">Fetch Comments &amp; Analyze</button>
+          </div>
+          <div id="ig-public-result-box" style="margin-top:20px; display:none;"></div>
+        </div>
+
+        <!-- Instagram Upload File Mode -->
+        <div class="mode-view" id="ig-view-upload" style="display:none;">
+          <div class="drop-zone" id="ig-drop-zone">
+            <div class="drop-icon">&#128194;</div>
+            <div class="drop-title">Upload Instagram Comments File</div>
+            <div class="drop-desc">Upload exported CSV, XLSX, XLS, JSON, or TXT file</div>
+            <input type="file" id="ig-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
+          </div>
+          <div id="ig-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
+          <div style="margin-top:20px;">
+            <button class="btn-primary" id="btn-ig-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Facebook Sub-view -->
+      <div class="meta-sub-view" id="meta-view-facebook" style="display:none;">
+        <div class="subview-header">
+          <h3 class="subview-title">Facebook Page Comment Intelligence</h3>
+          <div class="segmented-tabs" id="fb-tabs">
+            <button class="seg-tab active" data-mode="api">API</button>
+            <button class="seg-tab" data-mode="public">Without API</button>
+            <button class="seg-tab" data-mode="upload">Upload File</button>
+          </div>
+        </div>
+
+        <!-- Facebook API Mode -->
+        <div class="mode-view" id="fb-view-api">
+          <div class="form-group">
+            <label class="form-label" for="fb-post-input">Facebook Post URL or Post ID</label>
+            <input type="text" id="fb-post-input" class="form-control" placeholder="https://www.facebook.com/.../posts/123456 or Post ID">
+          </div>
+          <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
+            <button class="btn-primary" id="btn-fb-fetch-api">Fetch Comments &amp; Analyze</button>
+            <button class="btn-outline" id="btn-fb-connect-oauth">Connect Facebook Page</button>
+          </div>
+        </div>
+
+        <!-- Facebook Without API Mode -->
+        <div class="mode-view" id="fb-view-public" style="display:none;">
+          <div class="form-group">
+            <label class="form-label" for="fb-public-input">Facebook Public Post URL</label>
+            <input type="text" id="fb-public-input" class="form-control" placeholder="https://www.facebook.com/...">
+          </div>
+          <div style="margin-top:20px;">
+            <button class="btn-primary" id="btn-fb-fetch-public">Fetch Comments &amp; Analyze</button>
+          </div>
+          <div id="fb-public-result-box" style="margin-top:20px; display:none;"></div>
+        </div>
+
+        <!-- Facebook Upload File Mode -->
+        <div class="mode-view" id="fb-view-upload" style="display:none;">
+          <div class="drop-zone" id="fb-drop-zone">
+            <div class="drop-icon">&#128194;</div>
+            <div class="drop-title">Upload Facebook Comments File</div>
+            <div class="drop-desc">Upload exported CSV, XLSX, XLS, JSON, or TXT file</div>
+            <input type="file" id="fb-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
+          </div>
+          <div id="fb-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
+          <div style="margin-top:20px;">
+            <button class="btn-primary" id="btn-fb-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         4. E-COMMERCE ANALYZER (Separate Clean Input Page)
+         ================================================================ -->
+    <section class="panel-container" id="section-ecommerce" style="display:none;">
+      <div class="panel-top-bar">
+        <button type="button" class="panel-back" id="btn-ecom-back">&larr; Back to Home</button>
+      </div>
+
+      <div class="panel-header">
+        <div class="panel-heading">
+          <h2>E-commerce Analyzer</h2>
+          <p class="panel-subtitle">Extract verified customer reviews and specifications across major e-commerce platforms.</p>
+        </div>
+
+        <!-- Supported Platforms Bar -->
+        <div class="ecom-platforms-bar">
+          <span class="platform-chip amazon" title="Amazon India & International">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-1 14.5v-9l6 4.5-6 4.5z"/></svg>
+            Amazon
+          </span>
+          <span class="platform-chip flipkart" title="Flipkart India">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M19 6h-2c0-2.76-2.24-5-5-5S7 3.24 7 6H5c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V8c0-1.1-.9-2-2-2zm-7-3c1.66 0 3 1.34 3 3H9c0-1.66 1.34-3 3-3z"/></svg>
+            Flipkart
+          </span>
+          <span class="platform-chip meesho" title="Meesho">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+            Meesho
+          </span>
+          <span class="platform-chip jio" title="AJIO / Jio">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"></circle></svg>
+            Jio / AJIO
+          </span>
+          <span class="platform-chip myntra" title="Myntra">
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+            Myntra
+          </span>
+        </div>
+
+        <!-- 2 Modes: Fetch from URL and Upload File -->
+        <div class="segmented-tabs" id="ecom-tabs">
+          <button class="seg-tab active" data-mode="search">Fetch from URL</button>
+          <button class="seg-tab" data-mode="upload">Upload File</button>
+        </div>
+      </div>
+
+      <!-- Mode 1: Fetch from URL -->
+      <div class="mode-view" id="ecom-view-search">
+        <div class="form-group">
+          <label class="form-label" for="ecom-url-input">Paste Product or Review Page URL</label>
+          <input type="text" id="ecom-url-input" class="form-control" placeholder="e.g. https://www.flipkart.com/.../p/itm... or https://www.amazon.in/dp/...">
+        </div>
+
+        <div style="margin-top:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+          <div id="ecom-platform-detected" style="display:none; align-items:center; gap:8px;">
+            <span style="font-size:12px; color:var(--text-secondary);">Detected platform:</span>
+            <span id="ecom-detected-badge" class="dash-pill" style="font-weight:700;"></span>
+          </div>
+
+          <div class="ecom-collection-mode">
+            <span class="ecom-live-dot"></span>
+            <span><strong>All accessible reviews</strong><small>Continuous pagination extraction</small></span>
+          </div>
+        </div>
+
+        <div style="margin-top:24px;">
+          <button class="btn-primary" id="btn-ecom-fetch-url">Fetch Reviews &amp; Analyze</button>
+        </div>
+
+        <!-- Container for Live E-commerce Product Overview -->
+        <div id="ecom-product-details" style="display:none; margin-top:24px;"></div>
+      </div>
+
+      <!-- Mode 2: Upload File -->
+      <div class="mode-view" id="ecom-view-upload" style="display:none;">
+        <div class="drop-zone" id="ecom-drop-zone">
+          <div class="drop-icon">&#128194;</div>
+          <div class="drop-title">Upload E-commerce Reviews Dataset</div>
+          <div class="drop-desc">Upload exported reviews in CSV, XLSX, XLS, JSON, or TXT format</div>
+          <input type="file" id="ecom-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
+        </div>
+        <div id="ecom-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
+        <div style="margin-top:20px;">
+          <button class="btn-primary" id="btn-ecom-upload-analyze" disabled>Upload &amp; Analyze Reviews</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         5. ANALYSIS HISTORY VIEW (Separate Attractive Page, Latest 20)
+         ================================================================ -->
+    <section class="panel-container" id="section-history" style="display:none;">
+      <div class="panel-top-bar">
+        <button type="button" class="panel-back" id="btn-history-back">&larr; Back to Home</button>
+      </div>
+
+      <div class="panel-header">
+        <div class="panel-heading">
+          <h2>Analysis History</h2>
+          <p class="panel-subtitle">Review your latest 20 analysis reports stored securely in local database.</p>
+        </div>
+      </div>
+
+      <div style="margin-bottom:20px;">
+        <input type="text" id="history-page-search" class="form-control" placeholder="Search previous reports by title, platform or date...">
+      </div>
+
+      <!-- History Items Container (Enforces latest 20) -->
+      <div id="history-page-container" class="history-grid-container">
+        <div style="text-align:center; padding:40px; color:var(--text-muted);">Loading history...</div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         6. HOW TO USE VIEW (Beginner-Friendly Step-by-Step Guide)
+         ================================================================ -->
+    <section class="panel-container" id="section-howtouse" style="display:none;">
+      <div class="panel-top-bar">
+        <button type="button" class="panel-back" id="btn-howtouse-back">&larr; Back to Home</button>
+      </div>
+
+      <div class="panel-header">
+        <div class="panel-heading">
+          <h2>How to Use SocialPlus.ai</h2>
+          <p class="panel-subtitle">Simple, step-by-step instructions for non-technical users.</p>
+        </div>
+
+        <!-- Language Selector inside How to Use ONLY (English + 22 Scheduled Indian Languages) -->
+        <div class="howtouse-lang-wrapper">
+          <label for="howtouse-lang-select" class="form-label" style="margin-bottom:4px; font-size:11px; text-transform:uppercase;">Select Guide Language</label>
+          <select id="howtouse-lang-select" class="form-control" style="min-width:240px; cursor:pointer;">
+            <option value="en">English</option>
+            <option value="hi">हिंदी (Hindi)</option>
+            <option value="bn">বাংলা (Bengali)</option>
+            <option value="te">తెలుగు (Telugu)</option>
+            <option value="mr">मराठी (Marathi)</option>
+            <option value="ta">தமிழ் (Tamil)</option>
+            <option value="gu">ગુજરાતી (Gujarati)</option>
+            <option value="kn">ಕನ್ನಡ (Kannada)</option>
+            <option value="ml">മലയാളം (Malayalam)</option>
+            <option value="pa">ਪੰਜਾਬੀ (Punjabi)</option>
+            <option value="ur">اردو (Urdu)</option>
+            <option value="or">ଓଡ଼ିଆ (Odia)</option>
+            <option value="as">অসমীয়া (Assamese)</option>
+            <option value="sa">संस्कृतम् (Sanskrit)</option>
+            <option value="ne">नेपाली (Nepali)</option>
+            <option value="sd">سنڌي / सिंधी (Sindhi)</option>
+            <option value="ks">कॉशुर / كٲشُر (Kashmiri)</option>
+            <option value="mai">मैथिली (Maithili)</option>
+            <option value="kok">कोंकणी (Konkani)</option>
+            <option value="mni">মৈতৈলোন্ (Manipuri)</option>
+            <option value="brx">बड़ो (Bodo)</option>
+            <option value="sat">ᱥᱟᱱᱛᱟᱲᱤ (Santali)</option>
+            <option value="doi">डोगरी (Dogri)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Dynamic Multilingual Guide Content -->
+      <div id="howtouse-content" class="howtouse-body"></div>
+    </section>
+
+    <!-- ================================================================
+         7. EXTRACTION MONITOR VIEW (Live Multi-Engine Monitor)
+         ================================================================ -->
+    <section class="extraction-monitor-container" id="section-extraction-monitor" style="display:none;">
+      <div class="monitor-header">
+        <div class="monitor-brand-title">
+          <div class="brand-logo" style="width:42px; height:42px; font-size:18px;">S+</div>
+          <div>
+            <div style="display:flex; align-items:center; gap:8px;">
+              <span class="monitor-engine-pill">Multi-Engine Extraction</span>
+              <span id="mon-timer-val" style="font-size:13px; font-weight:700; color:var(--text-secondary);">0.0s</span>
+            </div>
+            <h2 class="monitor-title">Universal Extraction Engine</h2>
+            <p class="monitor-subtitle">Intelligent Data Retrieval &amp; Live Engine Monitoring</p>
+          </div>
+        </div>
+        <div style="display:flex; gap:10px;">
+          <button class="btn-outline" id="btn-mon-cancel" style="color:var(--accent-rose); border-color:rgba(244,63,94,0.4);">Cancel Extraction</button>
+          <button class="btn-outline" id="btn-mon-return">&larr; Return to Analyzers</button>
+        </div>
+      </div>
+
+      <!-- Completion Banner -->
+      <div class="completion-banner" id="mon-completion-banner">
+        <div class="completion-content">
+          <div class="completion-info">
+            <h3>&#10003; Extraction Completed Successfully</h3>
+            <p>Platform: <b><span id="comp-platform-val">FLIPKART</span></b> &bull; Retrieved &amp; Validated: <b><span id="comp-count-val">0</span></b> customer comments</p>
+          </div>
+          <div>
+            <button class="btn-primary" id="btn-mon-proceed-analysis">Continue to AI Analysis &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Failure Banner -->
+      <div class="failure-banner" id="mon-failure-banner">
+        <div style="display:flex; justify-content:space-between; align-items:flex-start; flex-wrap:wrap; gap:16px;">
+          <div>
+            <h4 style="font-size:16px; font-weight:800; color:#b91c1c; margin-bottom:4px;">&#9888; Direct Automated Review Access Restricted</h4>
+            <p style="font-size:13px; color:#7f1d1d; max-width:700px; line-height:1.5;" id="fail-reason-val">
+              Website enforces anti-bot controls or requires user authentication.
+            </p>
+          </div>
+          <div style="display:flex; gap:10px;">
+            <button class="btn-primary" id="btn-mon-fail-upload" style="background:#dc2626;">Upload Reviews File (CSV/Excel)</button>
+            <button class="btn-outline" id="btn-mon-fail-retry">Retry Extraction</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Source Info Card -->
+      <div class="monitor-source-card">
+        <div class="source-item">
+          <span class="source-label">Detected Platform</span>
+          <span class="source-value" id="mon-platform-val" style="color:var(--accent-gold);">DETECTING...</span>
+        </div>
+        <div class="source-item" style="grid-column: span 2;">
+          <span class="source-label">Target URL</span>
+          <span class="source-value" id="mon-url-val">—</span>
+        </div>
+        <div class="source-item">
+          <span class="source-label">Task Identifier</span>
+          <span class="source-value" id="mon-taskid-val" style="font-family:monospace; font-size:12px;">—</span>
+        </div>
+      </div>
+
+      <!-- Progress Card -->
+      <div class="monitor-progress-card">
+        <div class="progress-header-row">
+          <div class="progress-current-stage">
+            <span class="progress-spinner" style="width:16px; height:16px; margin:0; border-width:2px;"></span>
+            <span id="mon-stage-desc">Initializing engine pipeline...</span>
+          </div>
+          <span class="progress-percentage" id="mon-progress-pct">0%</span>
+        </div>
+        <div class="progress-track">
+          <div class="progress-fill-bar" id="mon-progress-bar"></div>
+        </div>
+        <div class="stage-breadcrumbs">
+          <span class="stage-pill active" id="stage-p-detect">&#9679; 1. Detection</span>
+          <span class="stage-pill" id="stage-p-engine">&#9679; 2. Engine Select</span>
+          <span class="stage-pill" id="stage-p-extract">&#9679; 3. Extraction</span>
+          <span class="stage-pill" id="stage-p-validate">&#9679; 4. Validation</span>
+          <span class="stage-pill" id="stage-p-analysis">&#9679; 5. AI Analysis</span>
+        </div>
+      </div>
+
+      <!-- Live Terminal Activity Log -->
+      <div class="monitor-terminal-card">
+        <div class="terminal-header">
+          <div class="terminal-title">
+            <span style="display:inline-block; width:8px; height:8px; border-radius:50%; background:#38bdf8;"></span>
+            Real-Time Engine Activity Stream
+          </div>
+        </div>
+        <div class="terminal-body" id="mon-terminal-body">
+          <div class="log-entry">
+            <span class="log-time">[00:00:00]</span>
+            <span class="log-msg info">Universal Extraction Engine initialized. Standing by for task...</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================================================================
+         8. SEPARATE ANALYSIS RESULTS PAGE (Dashboard)
+         ================================================================ -->
+    <section class="dashboard-container" id="section-dashboard">
+      
+      <!-- Dashboard Header -->
+      <div class="dash-header">
+        <div class="dash-title-wrap">
+          <div style="display:flex; align-items:center; gap:12px; margin-bottom:8px;">
+            <button class="panel-back" id="btn-dash-back">&larr; Back to Analyzers</button>
+            <h2 id="dash-heading-title">Analysis Intelligence Dashboard</h2>
+          </div>
+          <div class="dash-meta-pills">
+            <span class="dash-pill" id="dash-meta-platform">Platform: YouTube</span>
+            <span class="dash-pill" id="dash-meta-source">Mode: API</span>
+            <span class="dash-pill" id="dash-meta-date">Date: Just Now</span>
+            <span class="dash-pill" id="dash-meta-time">Time: 0.8s</span>
+          </div>
+        </div>
+
+        <!-- Download Reports Actions -->
+        <div class="dash-actions">
+          <a class="nav-btn" id="btn-dl-pdf" target="_blank" title="Export PDF Report">PDF</a>
+          <a class="nav-btn" id="btn-dl-html" target="_blank" title="Export HTML Report">HTML</a>
+          <a class="nav-btn" id="btn-dl-excel" target="_blank" title="Export Excel Spreadsheet">Excel (.xlsx)</a>
+          <a class="nav-btn" id="btn-dl-csv" target="_blank" title="Export CSV Data">CSV</a>
+          <a class="nav-btn" id="btn-dl-json" target="_blank" title="Export JSON Structure">JSON</a>
+        </div>
+      </div>
+
+      <!-- E-commerce Product Intelligence Card (Dynamic) -->
+      <div id="dash-product-card" style="display:none; margin: 20px 0;"></div>
+
+      <!-- Main Statistics Cards -->
+      <div class="stats-grid">
+        <div class="stat-card">
+          <div class="stat-label">Total Analyzed</div>
+          <div class="stat-val" id="stat-total">0</div>
+          <div class="stat-sub" id="stat-retrieved-sub">100% analyzed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Positive Comments</div>
+          <div class="stat-val positive" id="stat-positive">0%</div>
+          <div class="stat-sub" id="stat-pos-count">0 comments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Negative Comments</div>
+          <div class="stat-val negative" id="stat-negative">0%</div>
+          <div class="stat-sub" id="stat-neg-count">0 comments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Neutral / Mixed</div>
+          <div class="stat-val neutral" id="stat-neutral">0%</div>
+          <div class="stat-sub" id="stat-neu-count">0 comments</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Spam Flagged</div>
+          <div class="stat-val spam" id="stat-spam">0</div>
+          <div class="stat-sub">Review recommended</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Toxic Language</div>
+          <div class="stat-val toxic" id="stat-toxic">0</div>
+          <div class="stat-sub">Offensive / hostile</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-label">Average Confidence</div>
+          <div class="stat-val" id="stat-confidence">0%</div>
+          <div class="stat-sub">AI classification score</div>
+        </div>
+        <div class="stat-card" id="stat-rating-card" style="display:none;">
+          <div class="stat-label">Average Rating</div>
+          <div class="stat-val" style="color:var(--accent-gold);" id="stat-rating">N/A</div>
+          <div class="stat-sub">Out of 5.0 stars</div>
+        </div>
+      </div>
+
+      <!-- Sentiment Pill Visual Bar -->
+      <div class="chart-card" style="margin-bottom:24px; padding:20px 24px;">
+        <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+          <span style="font-size:14px; font-weight:700;">Sentiment Distribution Spectrum</span>
+          <div id="sentiment-legend" style="display:flex; gap:14px; font-size:12px; font-weight:600; flex-wrap:wrap;"></div>
+        </div>
+        <div class="sentiment-pills-bar" id="sentiment-progress-bar"></div>
+      </div>
+
+      <!-- Charts Grid 1: Sentiment Donut & Emotion Bar -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Sentiment Categorization</span>
+            <span class="chart-subtitle">5 Mutually Exclusive Classes</span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-sentiment-donut"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Emotion Intelligence</span>
+            <span class="chart-subtitle">10 Detected Emotional Dimensions</span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-emotions-bar"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Charts Grid 2: Intent & Auto-Moderation -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Comment Intent Breakdown</span>
+            <span class="chart-subtitle">Audience communication motivations</span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-intent-bar"></canvas>
+          </div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Auto-Moderation &amp; Safety</span>
+            <span class="chart-subtitle">Spam, Toxicity &amp; Policy Adherence</span>
+          </div>
+          <div class="chart-canvas-wrap">
+            <canvas id="chart-moderation-doughnut"></canvas>
+          </div>
+        </div>
+      </div>
+
+      <!-- Product Aspect Analysis -->
+      <div class="chart-card full-width" id="section-aspects" style="margin-bottom:28px;">
+        <div class="chart-header">
+          <div>
+            <span class="chart-title">Product &amp; Feature Aspect Analysis</span>
+            <div class="chart-subtitle">Dynamic extraction of mentioned attributes and satisfaction ratings</div>
+          </div>
+          <div id="aspect-satisfaction-pill" class="dash-pill" style="font-size:13px; font-weight:700;">
+            Satisfaction Index: 85%
+          </div>
+        </div>
+        <div class="comment-table-wrap">
+          <table class="aspects-table">
+            <thead>
+              <tr>
+                <th>Product Aspect</th>
+                <th>Mentions</th>
+                <th>Positive vs Negative Ratio</th>
+                <th>Positive %</th>
+                <th>Negative %</th>
+                <th>Sample Representative Feedback</th>
+              </tr>
+            </thead>
+            <tbody id="aspects-table-body"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Emoji Intelligence & Keyword Cloud -->
+      <div class="charts-grid">
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Emoji Intelligence</span>
+            <span class="chart-subtitle">Top used emojis &amp; contextual sentiment</span>
+          </div>
+          <div class="emoji-grid" id="emoji-grid-container"></div>
+        </div>
+
+        <div class="chart-card">
+          <div class="chart-header">
+            <span class="chart-title">Top Word &amp; Phrase Cloud</span>
+            <span class="chart-subtitle">Frequently discussed keywords</span>
+          </div>
+          <div class="wordcloud-container" id="wordcloud-container"></div>
+        </div>
+      </div>
+
+      <!-- COMMENT EXPLORER TABLE (SEARCHABLE & FILTERABLE) -->
+      <div class="explorer-card">
+        <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:18px; flex-wrap:wrap; gap:10px;">
+          <div>
+            <h3 style="font-family:var(--font-heading); font-size:18px; font-weight:700;">Comment Explorer Table</h3>
+            <span style="font-size:12px; color:var(--text-secondary);">Browse, search, and inspect individual comment records and AI classification signals</span>
+          </div>
+          <div id="explorer-count-badge" class="dash-pill">Showing 0 comments</div>
+        </div>
+
+        <!-- Filter Controls -->
+        <div class="explorer-filters">
+          <input type="text" id="filter-search" class="filter-input" placeholder="Search comments by keyword or author...">
+          
+          <select id="filter-sentiment" class="filter-select">
+            <option value="all">All Sentiments</option>
+            <option value="Positive">Positive</option>
+            <option value="Negative">Negative</option>
+            <option value="Neutral">Neutral</option>
+            <option value="Mixed">Mixed</option>
+            <option value="Sarcastic">Sarcastic</option>
+          </select>
+
+          <select id="filter-emotion" class="filter-select">
+            <option value="all">All Emotions</option>
+            <option value="Joy">Joy</option>
+            <option value="Love">Love</option>
+            <option value="Anger">Anger</option>
+            <option value="Sadness">Sadness</option>
+            <option value="Surprise">Surprise</option>
+            <option value="Frustration">Frustration</option>
+            <option value="Disappointment">Disappointment</option>
+            <option value="Excitement">Excitement</option>
+            <option value="Trust">Trust</option>
+          </select>
+
+          <select id="filter-intent" class="filter-select">
+            <option value="all">All Intents</option>
+            <option value="Question">Question</option>
+            <option value="General Feedback">General Feedback</option>
+            <option value="Complaint">Complaint</option>
+            <option value="Appreciation">Appreciation</option>
+            <option value="Suggestion">Suggestion</option>
+            <option value="Request">Request</option>
+            <option value="Product Inquiry">Product Inquiry</option>
+            <option value="Support Request">Support Request</option>
+            <option value="Spam">Spam</option>
+          </select>
+
+          <select id="filter-moderation" class="filter-select">
+            <option value="all">All Moderation</option>
+            <option value="Safe">Safe</option>
+            <option value="Review Required">Review Required</option>
+            <option value="Suspicious">Suspicious</option>
+            <option value="Spam">Spam</option>
+            <option value="Toxic">Toxic</option>
+          </select>
+
+          <select id="filter-sort" class="filter-select">
+            <option value="date">Sort: Default</option>
+            <option value="likes">Sort: Most Likes</option>
+            <option value="rating">Sort: Highest Rating</option>
+            <option value="confidence">Sort: AI Confidence</option>
+          </select>
+        </div>
+
+        <!-- Table -->
+        <div class="comment-table-wrap">
+          <table class="comments-table">
+            <thead>
+              <tr>
+                <th>Author</th>
+                <th>Sentiment</th>
+                <th>Emotion</th>
+                <th>Intent</th>
+                <th>Safety</th>
+                <th>Comment Content</th>
+                <th>Action</th>
+              </tr>
+            </thead>
+            <tbody id="comments-table-body"></tbody>
+          </table>
+        </div>
+
+        <!-- Pagination Controls -->
+        <div class="pagination-wrap">
+          <div id="pagination-info">Showing page 1 of 1</div>
+          <div class="pagination-btns">
+            <button class="page-btn" id="btn-page-prev">&larr; Previous</button>
+            <span id="pagination-pages" style="display:flex; gap:4px;"></span>
+            <button class="page-btn" id="btn-page-next">Next &rarr;</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- ================================================================
+       PREMIUM GLASS POPUP MODALS
+       ================================================================ -->
+
+  <!-- Glass Confirmation Modal (Replaces browser confirm) -->
+  <div class="modal-backdrop" id="modal-confirm">
+    <div class="modal-content" style="max-width:440px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-confirm-title">Confirm Action</h3>
+        <button class="modal-close" id="btn-modal-confirm-close">&times;</button>
+      </div>
+      <p id="modal-confirm-message" style="font-size:14px; color:var(--text-secondary); margin-bottom:24px; line-height:1.6;">
+        Are you sure you want to proceed?
+      </p>
+      <div style="display:flex; justify-content:flex-end; gap:12px;">
+        <button class="btn-outline" id="btn-modal-confirm-cancel">Cancel</button>
+        <button class="btn-primary" id="btn-modal-confirm-ok" style="background:var(--accent-rose); border-color:var(--accent-rose);">Delete Record</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Glass Error & Retry Modal -->
+  <div class="modal-backdrop" id="modal-error">
+    <div class="modal-content" style="max-width:460px;">
+      <div class="modal-header">
+        <h3 class="modal-title" id="modal-error-title" style="color:var(--accent-rose);">&#9888; Extraction Notice</h3>
+        <button class="modal-close" id="btn-modal-error-close">&times;</button>
+      </div>
+      <p id="modal-error-message" style="font-size:14px; color:var(--text-secondary); margin-bottom:22px; line-height:1.6;">
+        An unexpected error occurred while analyzing comments.
+      </p>
+      <div style="display:flex; justify-content:flex-end; gap:12px;">
+        <button class="btn-outline" id="btn-modal-error-dismiss">Dismiss</button>
+        <button class="btn-primary" id="btn-modal-error-retry">Retry</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Comment Detail Modal -->
+  <div class="modal-backdrop" id="modal-comment-detail">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Comment Intelligence Details</h3>
+        <button class="modal-close" onclick="closeModal('modal-comment-detail')">&times;</button>
+      </div>
+      <div id="comment-detail-body" style="font-size:13px; line-height:1.6;"></div>
+    </div>
+  </div>
+
+  <!-- Progress Loading Overlay -->
+  <div class="progress-overlay" id="progress-overlay" style="display:none;">
+    <div class="progress-card">
+      <div class="progress-spinner"></div>
+      <div class="progress-title" id="progress-title">Analyzing Comments</div>
+      <div class="progress-step" id="progress-step">Running AI/ML Intelligence Pipeline...</div>
+      <div id="progress-steps-list" style="margin-top:14px; display:flex; flex-direction:column; gap:6px; min-width:260px;"></div>
+      <div id="progress-count" style="margin-top:10px; font-size:13px; color:var(--text-secondary); display:none;"></div>
+      <button id="btn-progress-cancel" class="btn-outline" style="margin-top:18px; padding:6px 18px; font-size:12px; display:none;" onclick="cancelCurrentFetch()">Cancel</button>
+    </div>
+  </div>
+
+  <!-- Toast Notification Container -->
+  <div id="toast-container"></div>
+
+  <!-- JavaScript Modules -->
+  <script src="/static/js/howtouse.js"></script>
+  <script src="/static/js/charts.js"></script>
+  <script src="/static/js/youtube.js"></script>
+  <script src="/static/js/meta.js"></script>
+  <script src="/static/js/ecommerce.js"></script>
+  <script src="/static/js/upload.js"></script>
+  <script src="/static/js/extraction.js"></script>
+  <script src="/static/js/dashboard.js"></script>
+  <script src="/static/js/app.js"></script>
+
+</body>
+</html>
