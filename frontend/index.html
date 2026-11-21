@@ -23,25 +23,88 @@
 
   <!-- Top Navigation Bar -->
   <header class="top-nav">
-    <div class="brand-wrapper" id="nav-brand-home" role="button" tabindex="0" title="Return to Home">
-      <div class="brand-logo">S+</div>
-      <span class="brand-name">SocialPlus.ai</span>
-    </div>
-
-    <!-- Navigation Order: 1. History, 2. How to Use, 3. Extension -->
-    <div class="nav-actions">
-      <button class="nav-btn" id="btn-open-history" title="View past analysis reports">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-        History
+    <div class="nav-left">
+      <button class="nav-icon-btn" id="nav-toggle-sidebar" aria-label="Toggle navigation menu" title="Menu">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"></line><line x1="3" y1="6" x2="21" y2="6"></line><line x1="3" y1="18" x2="21" y2="18"></line></svg>
       </button>
 
-      <button class="nav-btn" id="btn-open-howtouse" title="Step-by-step beginner guide">
-        <svg width="15" height="15" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+      <div class="brand-wrapper" id="nav-brand-home" role="button" tabindex="0" title="Return to Home">
+        <div class="brand-spark-icon" aria-hidden="true">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 2L14.4 9.6L22 12L14.4 14.4L12 22L9.6 14.4L2 12L9.6 9.6L12 2Z"/>
+          </svg>
+        </div>
+        <div class="brand-text-col">
+          <div class="brand-title">SocialPlus<span class="brand-accent">.ai</span></div>
+          <div class="brand-micro-label">COMMENT INTELLIGENCE</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Center Navigation Buttons -->
+    <nav class="nav-center" aria-label="Main Navigation">
+      <button class="nav-pill-btn active" id="nav-btn-home" title="Go to Homepage">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+        Home
+      </button>
+
+      <button class="nav-pill-btn" id="btn-open-howtouse" title="Step-by-step beginner guide">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
         How to Use
       </button>
 
-      <!-- Extension: Placeholder Label (No functionality) -->
+      <!-- Platforms Dropdown -->
+      <div class="nav-dropdown" id="nav-platforms-dropdown">
+        <button class="nav-pill-btn nav-dropdown-trigger" id="btn-nav-platforms" aria-expanded="false" title="Browse supported platforms">
+          <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+          Platforms
+          <svg class="dropdown-arrow" width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"></polyline></svg>
+        </button>
+        <div class="nav-dropdown-menu" id="nav-platforms-menu">
+          <div class="dropdown-menu-item" id="nav-drop-yt" role="button" tabindex="0">
+            <span class="dropdown-menu-icon yt">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </span>
+            <div class="dropdown-menu-text">
+              <strong>YouTube Analytics</strong>
+              <span>Videos, Shorts &amp; Channels</span>
+            </div>
+          </div>
+          <div class="dropdown-menu-item" id="nav-drop-meta" role="button" tabindex="0">
+            <span class="dropdown-menu-icon meta">
+              <svg width="14" height="14" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </span>
+            <div class="dropdown-menu-text">
+              <strong>Meta Analytics</strong>
+              <span>Instagram &amp; Facebook Posts</span>
+            </div>
+          </div>
+          <div class="dropdown-menu-item" id="nav-drop-ecom" role="button" tabindex="0">
+            <span class="dropdown-menu-icon ecom">
+              <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </span>
+            <div class="dropdown-menu-text">
+              <strong>E-Commerce Analytics</strong>
+              <span>Amazon, Flipkart, Meesho, Jio &amp; Myntra</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <button class="nav-pill-btn" id="btn-open-history" title="View past analysis reports">
+        <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+        History
+      </button>
+
+      <!-- Extension Placeholder -->
       <span class="nav-placeholder-pill" id="nav-extension" title="Browser extension coming soon">Extension</span>
+    </nav>
+
+    <!-- Right Prominent CTA Button -->
+    <div class="nav-right">
+      <button class="nav-cta-analyze" id="btn-analyze-now" title="Select a platform and start analyzing">
+        <span class="sparkle-icon">✨</span> Analyze Now
+      </button>
     </div>
   </header>
 
@@ -53,49 +116,81 @@
          ================================================================ -->
     <section id="section-home">
       <div class="hero-section">
-        <h1 class="hero-title">SocialPlus.ai</h1>
-        <p class="hero-subtitle">Understand Every Comment. Discover Every Insight.</p>
+        <div class="hero-top-badge">
+          <span class="badge-sparkle">✨</span> COMMENT INTELLIGENCE
+        </div>
+        <h1 class="hero-title">SocialPlus<span class="hero-brand-accent">.ai</span></h1>
+        <p class="hero-subtitle">Analyze comments, understand audience sentiment, and discover meaningful insights across platforms.</p>
+
+        <!-- 3 Feature Pills in a Row -->
+        <div class="hero-feature-pills">
+          <div class="feature-pill"><span class="pill-ico">⚡</span> 5 AI Engines</div>
+          <div class="feature-pill"><span class="pill-ico">🌐</span> Multi-Platform</div>
+          <div class="feature-pill"><span class="pill-ico">🛡️</span> Auto Moderation</div>
+        </div>
       </div>
 
-      <!-- ONLY THREE Minimalist Analyzer Cards -->
-      <div class="analyzers-grid">
+      <!-- Section Label -->
+      <div class="platform-section-header">
+        <span class="platform-section-label">SELECT AN ANALYSIS PLATFORM</span>
+      </div>
+
+      <!-- ONLY THREE Minimalist Analyzer Cards Side-by-Side -->
+      <div class="analyzers-grid" id="home-platform-grid">
         
-        <!-- Card 1: YouTube Analyzer -->
-        <div class="analyzer-card" id="card-youtube" role="button" tabindex="0">
-          <div class="card-icon-wrap youtube">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+        <!-- Card 1: YouTube Analytics -->
+        <div class="analyzer-card platform-card" id="card-youtube" role="button" tabindex="0">
+          <div class="card-head-row">
+            <div class="card-icon-wrap yt">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+            </div>
+            <div class="card-tag-pills">
+              <span class="source-tag-pill tag-video">Video</span>
+            </div>
           </div>
-          <h3 class="card-title">YouTube Analyzer</h3>
+          <h3 class="card-title">YouTube Analytics</h3>
           <p class="card-desc">Analyze comments from YouTube videos, shorts, and channels.</p>
-          <div class="card-footer">
-            <span>Get API &bull; Upload File</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-footer-row">
+            <span class="card-action-link">Analyze YouTube <span class="arrow">&rarr;</span></span>
+            <span class="card-meta-tag">Link &bull; CSV &bull; Excel</span>
           </div>
         </div>
 
-        <!-- Card 2: Meta Analyzer -->
-        <div class="analyzer-card" id="card-meta" role="button" tabindex="0">
-          <div class="card-icon-wrap meta">
-            <svg width="24" height="24" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        <!-- Card 2: Meta Analytics -->
+        <div class="analyzer-card platform-card" id="card-meta" role="button" tabindex="0">
+          <div class="card-head-row">
+            <div class="card-icon-wrap meta">
+              <svg width="22" height="22" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+            </div>
+            <div class="card-tag-pills">
+              <span class="source-tag-pill tag-instagram">Instagram</span>
+              <span class="source-tag-pill tag-facebook">Facebook</span>
+            </div>
           </div>
-          <h3 class="card-title">Meta Analyzer</h3>
+          <h3 class="card-title">Meta Analytics</h3>
           <p class="card-desc">Analyze Instagram and Facebook post comments and discussions.</p>
-          <div class="card-footer">
-            <span>Instagram &bull; Facebook</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-footer-row">
+            <span class="card-action-link">Analyze Meta <span class="arrow">&rarr;</span></span>
+            <span class="card-meta-tag">API &bull; Scraper &bull; Upload</span>
           </div>
         </div>
 
-        <!-- Card 3: E-commerce Analyzer -->
-        <div class="analyzer-card" id="card-ecommerce" role="button" tabindex="0">
-          <div class="card-icon-wrap ecommerce">
-            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+        <!-- Card 3: E-commerce Analytics -->
+        <div class="analyzer-card platform-card" id="card-ecommerce" role="button" tabindex="0">
+          <div class="card-head-row">
+            <div class="card-icon-wrap ecom">
+              <svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M6 2L3 6v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2V6l-3-4z"></path><line x1="3" y1="6" x2="21" y2="6"></line><path d="M16 10a4 4 0 0 1-8 0"></path></svg>
+            </div>
+            <div class="card-tag-pills">
+              <span class="source-tag-pill tag-flipkart">Flipkart</span>
+              <span class="source-tag-pill tag-amazon">Amazon</span>
+            </div>
           </div>
-          <h3 class="card-title">E-commerce Analyzer</h3>
+          <h3 class="card-title">E-Commerce Analytics</h3>
           <p class="card-desc">Analyze product reviews across Amazon, Flipkart, Meesho, Jio &amp; Myntra.</p>
-          <div class="card-footer">
-            <span>Amazon, Flipkart, Meesho, Jio, Myntra</span>
-            <span class="card-arrow">&rarr;</span>
+          <div class="card-footer-row">
+            <span class="card-action-link">Analyze E-Commerce <span class="arrow">&rarr;</span></span>
+            <span class="card-meta-tag">URL &bull; CSV &bull; Reviews</span>
           </div>
         </div>
 
@@ -108,11 +203,16 @@
     <section class="panel-container" id="section-youtube" style="display:none;">
       <div class="panel-top-bar">
         <button type="button" class="panel-back" id="btn-yt-back">&larr; Back to Home</button>
+        <div class="panel-breadcrumb">
+          <span class="crumb-link" data-go-view="home">Home</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">YouTube Analytics</span>
+        </div>
       </div>
 
       <div class="panel-header">
         <div class="panel-heading">
-          <h2>YouTube Analyzer</h2>
+          <h2>YouTube Analytics</h2>
           <p class="panel-subtitle">Extract and understand audience opinions and engagement on YouTube videos.</p>
         </div>
 
@@ -134,7 +234,16 @@
 
         <div class="form-group">
           <label class="form-label" for="yt-video-input">Enter YouTube URL or Video ID</label>
-          <input type="text" id="yt-video-input" class="form-control" placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or youtu.be/... or Shorts URL">
+          <div class="input-field-wrapper">
+            <span class="input-leading-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </span>
+            <input type="text" id="yt-video-input" class="form-control" placeholder="e.g. https://www.youtube.com/watch?v=dQw4w9WgXcQ or youtu.be/... or Shorts URL">
+            <div class="input-actions-group">
+              <button type="button" class="btn-input-action" data-paste-target="yt-video-input" title="Paste from clipboard">Paste</button>
+              <button type="button" class="btn-input-action" data-clear-target="yt-video-input" title="Clear field">Clear</button>
+            </div>
+          </div>
         </div>
 
         <!-- Comment Quality Selector -->
@@ -154,7 +263,7 @@
 
         <div style="margin-top:28px;">
           <button class="btn-primary" id="btn-yt-fetch-api">
-            Fetch Comments &amp; Analyze
+            <span class="btn-sparkle">✨</span> Fetch Comments &amp; Analyze
           </button>
         </div>
       </div>
@@ -165,11 +274,17 @@
           <div class="drop-icon">&#128194;</div>
           <div class="drop-title">Upload YouTube Comments Dataset</div>
           <div class="drop-desc">Drag &amp; drop CSV, XLSX, XLS, JSON, or TXT file (Max 25MB)</div>
+          <div class="drop-formats-row">
+            <span class="format-pill">CSV</span>
+            <span class="format-pill">XLSX</span>
+            <span class="format-pill">JSON</span>
+            <span class="format-pill">TXT</span>
+          </div>
           <input type="file" id="yt-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
         </div>
         <div id="yt-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
         <div style="margin-top:20px;">
-          <button class="btn-primary" id="btn-yt-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+          <button class="btn-primary" id="btn-yt-upload-analyze" disabled><span class="btn-sparkle">✨</span> Upload &amp; Analyze Comments</button>
         </div>
       </div>
     </section>
@@ -180,11 +295,16 @@
     <section class="panel-container" id="section-meta" style="display:none;">
       <div class="panel-top-bar">
         <button type="button" class="panel-back" id="btn-meta-back">&larr; Back to Home</button>
+        <div class="panel-breadcrumb">
+          <span class="crumb-link" data-go-view="home">Home</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">Meta Analytics</span>
+        </div>
       </div>
 
       <div class="panel-header">
         <div class="panel-heading">
-          <h2>Meta Analyzer</h2>
+          <h2>Meta Analytics</h2>
           <p class="panel-subtitle">Extract and analyze customer interactions on Instagram and Facebook.</p>
         </div>
 
@@ -224,7 +344,16 @@
         <div class="mode-view" id="ig-view-api">
           <div class="form-group">
             <label class="form-label" for="ig-post-input">Instagram Post URL or Media ID</label>
-            <input type="text" id="ig-post-input" class="form-control" placeholder="https://www.instagram.com/p/C6xyz123/ or Reel URL">
+            <div class="input-field-wrapper">
+              <span class="input-leading-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </span>
+              <input type="text" id="ig-post-input" class="form-control" placeholder="https://www.instagram.com/p/C6xyz123/ or Reel URL">
+              <div class="input-actions-group">
+                <button type="button" class="btn-input-action" data-paste-target="ig-post-input" title="Paste from clipboard">Paste</button>
+                <button type="button" class="btn-input-action" data-clear-target="ig-post-input" title="Clear field">Clear</button>
+              </div>
+            </div>
           </div>
 
           <div class="form-group" style="margin-top:14px;">
@@ -233,7 +362,7 @@
           </div>
 
           <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
-            <button class="btn-primary" id="btn-ig-fetch-api">Fetch Comments &amp; Analyze</button>
+            <button class="btn-primary" id="btn-ig-fetch-api"><span class="btn-sparkle">✨</span> Fetch Comments &amp; Analyze</button>
             <button class="btn-outline" id="btn-ig-connect-oauth">Connect via OAuth</button>
           </div>
         </div>
@@ -242,10 +371,19 @@
         <div class="mode-view" id="ig-view-public" style="display:none;">
           <div class="form-group">
             <label class="form-label" for="ig-public-input">Instagram Public Post URL</label>
-            <input type="text" id="ig-public-input" class="form-control" placeholder="https://www.instagram.com/p/...">
+            <div class="input-field-wrapper">
+              <span class="input-leading-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </span>
+              <input type="text" id="ig-public-input" class="form-control" placeholder="https://www.instagram.com/p/...">
+              <div class="input-actions-group">
+                <button type="button" class="btn-input-action" data-paste-target="ig-public-input" title="Paste from clipboard">Paste</button>
+                <button type="button" class="btn-input-action" data-clear-target="ig-public-input" title="Clear field">Clear</button>
+              </div>
+            </div>
           </div>
           <div style="margin-top:20px;">
-            <button class="btn-primary" id="btn-ig-fetch-public">Fetch Comments &amp; Analyze</button>
+            <button class="btn-primary" id="btn-ig-fetch-public"><span class="btn-sparkle">✨</span> Fetch Comments &amp; Analyze</button>
           </div>
           <div id="ig-public-result-box" style="margin-top:20px; display:none;"></div>
         </div>
@@ -256,11 +394,16 @@
             <div class="drop-icon">&#128194;</div>
             <div class="drop-title">Upload Instagram Comments File</div>
             <div class="drop-desc">Upload exported CSV, XLSX, XLS, JSON, or TXT file</div>
+            <div class="drop-formats-row">
+              <span class="format-pill">CSV</span>
+              <span class="format-pill">XLSX</span>
+              <span class="format-pill">JSON</span>
+            </div>
             <input type="file" id="ig-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
           </div>
           <div id="ig-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
           <div style="margin-top:20px;">
-            <button class="btn-primary" id="btn-ig-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+            <button class="btn-primary" id="btn-ig-upload-analyze" disabled><span class="btn-sparkle">✨</span> Upload &amp; Analyze Comments</button>
           </div>
         </div>
       </div>
@@ -280,10 +423,19 @@
         <div class="mode-view" id="fb-view-api">
           <div class="form-group">
             <label class="form-label" for="fb-post-input">Facebook Post URL or Post ID</label>
-            <input type="text" id="fb-post-input" class="form-control" placeholder="https://www.facebook.com/.../posts/123456 or Post ID">
+            <div class="input-field-wrapper">
+              <span class="input-leading-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </span>
+              <input type="text" id="fb-post-input" class="form-control" placeholder="https://www.facebook.com/.../posts/123456 or Post ID">
+              <div class="input-actions-group">
+                <button type="button" class="btn-input-action" data-paste-target="fb-post-input" title="Paste from clipboard">Paste</button>
+                <button type="button" class="btn-input-action" data-clear-target="fb-post-input" title="Clear field">Clear</button>
+              </div>
+            </div>
           </div>
           <div style="display:flex; gap:12px; margin-top:24px; flex-wrap:wrap;">
-            <button class="btn-primary" id="btn-fb-fetch-api">Fetch Comments &amp; Analyze</button>
+            <button class="btn-primary" id="btn-fb-fetch-api"><span class="btn-sparkle">✨</span> Fetch Comments &amp; Analyze</button>
             <button class="btn-outline" id="btn-fb-connect-oauth">Connect Facebook Page</button>
           </div>
         </div>
@@ -292,10 +444,19 @@
         <div class="mode-view" id="fb-view-public" style="display:none;">
           <div class="form-group">
             <label class="form-label" for="fb-public-input">Facebook Public Post URL</label>
-            <input type="text" id="fb-public-input" class="form-control" placeholder="https://www.facebook.com/...">
+            <div class="input-field-wrapper">
+              <span class="input-leading-icon">
+                <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+              </span>
+              <input type="text" id="fb-public-input" class="form-control" placeholder="https://www.facebook.com/...">
+              <div class="input-actions-group">
+                <button type="button" class="btn-input-action" data-paste-target="fb-public-input" title="Paste from clipboard">Paste</button>
+                <button type="button" class="btn-input-action" data-clear-target="fb-public-input" title="Clear field">Clear</button>
+              </div>
+            </div>
           </div>
           <div style="margin-top:20px;">
-            <button class="btn-primary" id="btn-fb-fetch-public">Fetch Comments &amp; Analyze</button>
+            <button class="btn-primary" id="btn-fb-fetch-public"><span class="btn-sparkle">✨</span> Fetch Comments &amp; Analyze</button>
           </div>
           <div id="fb-public-result-box" style="margin-top:20px; display:none;"></div>
         </div>
@@ -306,11 +467,16 @@
             <div class="drop-icon">&#128194;</div>
             <div class="drop-title">Upload Facebook Comments File</div>
             <div class="drop-desc">Upload exported CSV, XLSX, XLS, JSON, or TXT file</div>
+            <div class="drop-formats-row">
+              <span class="format-pill">CSV</span>
+              <span class="format-pill">XLSX</span>
+              <span class="format-pill">JSON</span>
+            </div>
             <input type="file" id="fb-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
           </div>
           <div id="fb-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
           <div style="margin-top:20px;">
-            <button class="btn-primary" id="btn-fb-upload-analyze" disabled>Upload &amp; Analyze Comments</button>
+            <button class="btn-primary" id="btn-fb-upload-analyze" disabled><span class="btn-sparkle">✨</span> Upload &amp; Analyze Comments</button>
           </div>
         </div>
       </div>
@@ -322,11 +488,16 @@
     <section class="panel-container" id="section-ecommerce" style="display:none;">
       <div class="panel-top-bar">
         <button type="button" class="panel-back" id="btn-ecom-back">&larr; Back to Home</button>
+        <div class="panel-breadcrumb">
+          <span class="crumb-link" data-go-view="home">Home</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">E-Commerce Analytics</span>
+        </div>
       </div>
 
       <div class="panel-header">
         <div class="panel-heading">
-          <h2>E-commerce Analyzer</h2>
+          <h2>E-Commerce Analytics</h2>
           <p class="panel-subtitle">Extract verified customer reviews and specifications across major e-commerce platforms.</p>
         </div>
 
@@ -365,7 +536,16 @@
       <div class="mode-view" id="ecom-view-search">
         <div class="form-group">
           <label class="form-label" for="ecom-url-input">Paste Product or Review Page URL</label>
-          <input type="text" id="ecom-url-input" class="form-control" placeholder="e.g. https://www.flipkart.com/.../p/itm... or https://www.amazon.in/dp/...">
+          <div class="input-field-wrapper">
+            <span class="input-leading-icon">
+              <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"></path><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"></path></svg>
+            </span>
+            <input type="text" id="ecom-url-input" class="form-control" placeholder="e.g. https://www.flipkart.com/.../p/itm... or https://www.amazon.in/dp/...">
+            <div class="input-actions-group">
+              <button type="button" class="btn-input-action" data-paste-target="ecom-url-input" title="Paste from clipboard">Paste</button>
+              <button type="button" class="btn-input-action" data-clear-target="ecom-url-input" title="Clear field">Clear</button>
+            </div>
+          </div>
         </div>
 
         <div style="margin-top:14px; display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
@@ -381,7 +561,7 @@
         </div>
 
         <div style="margin-top:24px;">
-          <button class="btn-primary" id="btn-ecom-fetch-url">Fetch Reviews &amp; Analyze</button>
+          <button class="btn-primary" id="btn-ecom-fetch-url"><span class="btn-sparkle">✨</span> Fetch Reviews &amp; Analyze</button>
         </div>
 
         <!-- Container for Live E-commerce Product Overview -->
@@ -394,11 +574,16 @@
           <div class="drop-icon">&#128194;</div>
           <div class="drop-title">Upload E-commerce Reviews Dataset</div>
           <div class="drop-desc">Upload exported reviews in CSV, XLSX, XLS, JSON, or TXT format</div>
+          <div class="drop-formats-row">
+            <span class="format-pill">CSV</span>
+            <span class="format-pill">XLSX</span>
+            <span class="format-pill">JSON</span>
+          </div>
           <input type="file" id="ecom-file-input" style="display:none;" accept=".csv,.xlsx,.xls,.json,.txt">
         </div>
         <div id="ecom-file-meta" style="margin-top:12px; font-size:13px; color:var(--text-secondary);"></div>
         <div style="margin-top:20px;">
-          <button class="btn-primary" id="btn-ecom-upload-analyze" disabled>Upload &amp; Analyze Reviews</button>
+          <button class="btn-primary" id="btn-ecom-upload-analyze" disabled><span class="btn-sparkle">✨</span> Upload &amp; Analyze Reviews</button>
         </div>
       </div>
     </section>
@@ -409,6 +594,11 @@
     <section class="panel-container" id="section-history" style="display:none;">
       <div class="panel-top-bar">
         <button type="button" class="panel-back" id="btn-history-back">&larr; Back to Home</button>
+        <div class="panel-breadcrumb">
+          <span class="crumb-link" data-go-view="home">Home</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">Analysis History</span>
+        </div>
       </div>
 
       <div class="panel-header">
@@ -419,7 +609,15 @@
       </div>
 
       <div style="margin-bottom:20px;">
-        <input type="text" id="history-page-search" class="form-control" placeholder="Search previous reports by title, platform or date...">
+        <div class="input-field-wrapper">
+          <span class="input-leading-icon">
+            <svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><circle cx="11" cy="11" r="8"></circle><line x1="21" y1="21" x2="16.65" y2="16.65"></line></svg>
+          </span>
+          <input type="text" id="history-page-search" class="form-control" placeholder="Search previous reports by title, platform or date...">
+          <div class="input-actions-group">
+            <button type="button" class="btn-input-action" data-clear-target="history-page-search" title="Clear search">Clear</button>
+          </div>
+        </div>
       </div>
 
       <!-- History Items Container (Enforces latest 20) -->
@@ -434,6 +632,11 @@
     <section class="panel-container" id="section-howtouse" style="display:none;">
       <div class="panel-top-bar">
         <button type="button" class="panel-back" id="btn-howtouse-back">&larr; Back to Home</button>
+        <div class="panel-breadcrumb">
+          <span class="crumb-link" data-go-view="home">Home</span>
+          <span class="crumb-sep">/</span>
+          <span class="crumb-current">How to Use</span>
+        </div>
       </div>
 
       <div class="panel-header">

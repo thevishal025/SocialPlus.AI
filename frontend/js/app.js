@@ -51,6 +51,16 @@ function showView(viewName) {
 
   currentView = viewName;
   window.scrollTo({ top: 0, behavior: "smooth" });
+
+  // Sync Nav Pills Active State
+  const navBtnHome = document.getElementById("nav-btn-home");
+  if (navBtnHome) {
+    if (viewName === "home") {
+      navBtnHome.classList.add("active");
+    } else {
+      navBtnHome.classList.remove("active");
+    }
+  }
 }
 
 function setupViewRouting() {
@@ -62,6 +72,128 @@ function setupViewRouting() {
       if (e.key === "Enter" || e.key === " ") showView("home");
     });
   }
+
+  // Nav: Home Pill Button
+  const navBtnHome = document.getElementById("nav-btn-home");
+  if (navBtnHome) {
+    navBtnHome.addEventListener("click", () => showView("home"));
+  }
+
+  // Nav: Platforms Dropdown
+  const dropdownWrap = document.getElementById("nav-platforms-dropdown");
+  const btnPlatforms = document.getElementById("btn-nav-platforms");
+  if (btnPlatforms && dropdownWrap) {
+    btnPlatforms.addEventListener("click", (e) => {
+      e.stopPropagation();
+      const isOpen = dropdownWrap.classList.toggle("open");
+      btnPlatforms.setAttribute("aria-expanded", isOpen ? "true" : "false");
+    });
+
+    document.addEventListener("click", (e) => {
+      if (!dropdownWrap.contains(e.target)) {
+        dropdownWrap.classList.remove("open");
+        btnPlatforms.setAttribute("aria-expanded", "false");
+      }
+    });
+
+    const dropYt = document.getElementById("nav-drop-yt");
+    if (dropYt) {
+      dropYt.addEventListener("click", () => {
+        dropdownWrap.classList.remove("open");
+        btnPlatforms.setAttribute("aria-expanded", "false");
+        showView("youtube");
+      });
+    }
+
+    const dropMeta = document.getElementById("nav-drop-meta");
+    if (dropMeta) {
+      dropMeta.addEventListener("click", () => {
+        dropdownWrap.classList.remove("open");
+        btnPlatforms.setAttribute("aria-expanded", "false");
+        showView("meta");
+      });
+    }
+
+    const dropEcom = document.getElementById("nav-drop-ecom");
+    if (dropEcom) {
+      dropEcom.addEventListener("click", () => {
+        dropdownWrap.classList.remove("open");
+        btnPlatforms.setAttribute("aria-expanded", "false");
+        showView("ecommerce");
+      });
+    }
+  }
+
+  // Nav: Analyze Now CTA Button
+  const btnAnalyzeNow = document.getElementById("btn-analyze-now");
+  if (btnAnalyzeNow) {
+    btnAnalyzeNow.addEventListener("click", () => {
+      if (currentView !== "home") {
+        showView("home");
+      }
+      setTimeout(() => {
+        const grid = document.getElementById("home-platform-grid") || document.querySelector(".analyzers-grid");
+        if (grid) {
+          grid.scrollIntoView({ behavior: "smooth", block: "center" });
+          grid.classList.add("highlight-pulse");
+          setTimeout(() => grid.classList.remove("highlight-pulse"), 1200);
+        }
+      }, 50);
+    });
+  }
+
+  // Breadcrumb Home Links
+  document.querySelectorAll("[data-go-view]").forEach(link => {
+    link.addEventListener("click", () => {
+      const target = link.getAttribute("data-go-view") || "home";
+      showView(target);
+    });
+  });
+
+  // Global Quick Paste & Clear Helpers for Input Fields
+  document.querySelectorAll("[data-paste-target]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      const targetId = btn.getAttribute("data-paste-target");
+      const input = document.getElementById(targetId);
+      if (!input) return;
+
+      try {
+        if (navigator.clipboard && navigator.clipboard.readText) {
+          const text = await navigator.clipboard.readText();
+          if (text) {
+            input.value = text.trim();
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+            showToast("Pasted from clipboard", "info");
+          } else {
+            showToast("Clipboard is empty", "warning");
+          }
+        } else {
+          const text = prompt("Paste your URL or link here:");
+          if (text) {
+            input.value = text.trim();
+            input.dispatchEvent(new Event("input", { bubbles: true }));
+            input.dispatchEvent(new Event("change", { bubbles: true }));
+          }
+        }
+      } catch (err) {
+        showToast("Could not access clipboard. Please paste manually.", "warning");
+      }
+    });
+  });
+
+  document.querySelectorAll("[data-clear-target]").forEach(btn => {
+    btn.addEventListener("click", () => {
+      const targetId = btn.getAttribute("data-clear-target");
+      const input = document.getElementById(targetId);
+      if (input) {
+        input.value = "";
+        input.dispatchEvent(new Event("input", { bubbles: true }));
+        input.dispatchEvent(new Event("change", { bubbles: true }));
+        input.focus();
+      }
+    });
+  });
 
   // Nav: History
   const btnOpenHistory = document.getElementById("btn-open-history");
